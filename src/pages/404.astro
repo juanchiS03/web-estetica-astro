@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <main
+        class="flex flex-col items-center justify-center min-h-screen text-center px-4 pt-20 pb-10"
+    >
+        <div class="w-screen overflow-visible flex justify-center">
+            <h1
+                class="font-extrabold text-[#a96fcb] opacity-20 leading-none select-none pointer-events-none"
+                style="font-size: clamp(8rem, 25vw, 20rem); width: 100%; display: block;"
+            >
+                404
+            </h1>
+        </div>
+
+        <div
+            class="relative -mt-10 md:-mt-20 flex flex-col items-center w-full max-w-4xl"
+        >
+            <h2 class="text-4xl md:text-7xl font-bold text-slate-800 mb-6">
+                ¡Oops! Te has perdido
+            </h2>
+
+            <p class="text-slate-500 max-w-md mx-auto mb-12 text-lg md:text-xl">
+                Parece que el tratamiento que buscas no está por aquí. Pero no
+                te preocupes, tus uñas te están esperando en el inicio.
+            </p>
+
+            <a
+                href="/"
+                class="flex items-center justify-center bg-[#CDB4DB] text-white py-5 rounded-full font-bold shadow-xl shadow-purple-200 hover:scale-105 transition-all active:scale-95 text-xl whitespace-nowrap"
+                style="min-width: 400px !important; max-width: 90vw;"
+            >
+                Volver a la Estética
+            </a>
+        </div>
+
+        <div class="mt-12 animate-bounce">
+            <span class="text-5xl">💅</span>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    min-height: 100vh; /* Cambiamos height por min-height */
+    overflow-x: hidden; /* Evita que la web "baile" hacia los lados */
+    display: flex;
+    flex-direction: column;
+</style>
