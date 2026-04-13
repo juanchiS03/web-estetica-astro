@@ -1,0 +1,87 @@
+---
+import MapIcon from "./MapIcon.astro";
+import WhatsappIcon from "./WhatsappIcon.astro";
+---
+
+<div
+    class="bg-white/10 backdrop-blur-xl rounded-[40px] p-8 md:p-12 border-[#cdb4db] border-2 shadow-2xl flex flex-col justify-center"
+>
+    <h3 class="text-3xl font-bold text-[#45556c] mb-2">¿Tienes dudas?</h3>
+    <p class="text-slate-400 mb-10 italic">
+        Reserva tu cita por teléfono o ven a visitarnos a nuestro centro.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div class="space-y-8">
+            <div class="flex items-center gap-4 group">
+                <div
+                    class="size-12 rounded-full bg-[#CDB4DB]/20 flex items-center justify-center text-[#45556c]"
+                >
+                    <MapIcon />
+                </div>
+                <div>
+                    <p class="text-[#45556c] font-bold">Dirección</p>
+                    <p class="text-slate-400">
+                        Calle Vélez de Guevara, 30, Logroño
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 group">
+                <div
+                    class="size-12 rounded-full bg-[#CDB4DB]/20 flex items-center justify-center text-[#45556c]"
+                >
+                    <WhatsappIcon />
+                </div>
+                <div>
+                    <p class="text-[#45556c] font-bold">WhatsApp</p>
+                    <p class="text-slate-400">+34 638610289</p>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="bg-white/5 rounded-3xl p-6 border border-white/10 md:mt-0.5 md:pt-1.25"
+        >
+            <h4 class="text-[#45556c] font-bold mb-4 flex items-center gap-2">
+                <span class="text-[#CDB4DB]">🕒</span> Horario Comercial
+            </h4>
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-slate-400 font-medium"
+                        >Lunes - Viernes</span
+                    >
+                    <span class="text-[#45556c] font-bold">09:30 - 20:00</span>
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-slate-400 font-medium">Sábado</span>
+                    <span class="text-[#45556c] font-bold">10:00 - 14:00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400 font-medium">Domingo</span>
+                    <span
+                        class="text-[#CDB4DB] font-bold italic uppercase text-xs"
+                        >Cerrado</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 mt-12 w-full">
+        <a
+            href="https://wa.me/34638610289"
+            target="_blank"
+            class="flex-1 bg-[#25D366] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg whitespace-nowrap"
+        >
+            Hablar por WhatsApp
+        </a>
+
+        <a
+            href="tel:+34638610289"
+            class="flex-1 bg-[#CDB4DB] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg whitespace-nowrap"
+        >
+            Llamar por teléfono
+        </a>
+    </div>
+</div>

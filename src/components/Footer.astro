@@ -1,0 +1,42 @@
+---
+import InstagramIcon from "./InstagramIcon.astro";
+import WhatsappIcon from "./WhatsappIcon.astro";
+---
+
+<footer class="bg-black backdrop-blur-md border-t border-white/10 py-10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div
+            class="flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+            <span class="text-sm text-slate-400 text-center md:text-left">
+                © 2026 <a
+                    href="/"
+                    class="hover:text-[#CDB4DB] transition-colors font-semibold"
+                    >Estética Sandra</a
+                >. Casi todos los derechos reservados.
+            </span>
+
+            <div class="flex items-center space-x-6">
+                <a
+                    href="https://www.instagram.com/sandramzcordoba?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="size-24 inline-flex items-center justify-center text-slate-400 hover:text-[#CDB4DB] transition-all hover:scale-110"
+                    title="Síguenos en Instagram"
+                >
+                    <InstagramIcon />
+                </a>
+
+                <a
+                    href="https://wa.me/34638610289"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="size-6 inline-flex items-center justify-center text-slate-400 hover:text-[#CDB4DB] transition-all hover:scale-110"
+                    title="Escríbenos por WhatsApp"
+                >
+                    <WhatsappIcon />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

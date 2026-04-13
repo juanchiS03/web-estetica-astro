@@ -1,26 +1,48 @@
-<section class="relative h-[80vh] min-h-125 w-full rounded-[40px] overflow-hidden shadow-2xl bg-slate-900 flex justify-end items-center px-6 md:px-24 border-[#cdb4db] border-2">
-  
-  <img 
-    src="/images/hero-unas.webp" 
+---
+import { Image } from "astro:assets";
+import imageHero from "../assets/hero-unas.webp";
+---
+
+<section
+  class="relative h-[80vh] min-h-125 w-full rounded-[40px] overflow-hidden shadow-2xl bg-slate-900 flex justify-end items-center px-6 md:px-24 border-[#cdb4db] border-2"
+>
+  <Image
+    src={imageHero}
+    alt="Manicura premium"
+    width={800}
+    height={600}
+    loading={"eager"}
+    format="webp"
+    quality="high"
     class="absolute inset-0 w-full h-full object-cover object-left"
     alt="Manicura premium"
-    loading="eager" 
+    loading="eager"
     fetchpriority="high"
-  /><div class="absolute inset-0 bg-linear-to-l from-black/90 via-black/40 to-transparent"></div>
+  /><div
+    class="absolute inset-0 bg-linear-to-l from-black/90 via-black/40 to-transparent"
+  >
+  </div>
 
   <div class="relative z-10 p-10 md:p-20 md:pr-32 max-w-2xl text-left">
-    <h1 class="text-white text-5xl md:text-8xl font-bold leading-tight tracking-tighter">
-      Tus manos, <br /> 
-      <span class="text-[#CDB4DB]">tu mejor</span> <br /> 
+    <h1
+      class="text-white text-5xl md:text-8xl font-bold leading-tight tracking-tighter"
+    >
+      Tus manos, <br />
+      <span class="text-[#CDB4DB]">tu mejor</span>
+      <br />
       presentación
     </h1>
-    
+
     <p class="text-white/70 mt-8 text-lg md:text-xl font-light leading-relaxed">
-      Especialistas en manicura profesional y bienestar. Dale a tus uñas el cuidado que merecen.
+      Especialistas en manicura profesional y bienestar. Dale a tus uñas el
+      cuidado que merecen.
     </p>
 
     <div class="mt-12">
-      <a href="#contacto" class="bg-[#CDB4DB] text-white px-12 py-5 rounded-full font-bold hover:scale-105 transition-all duration-300 inline-block shadow-xl shadow-purple-900/20 active:scale-95">
+      <a
+        href="#contacto"
+        class="bg-[#CDB4DB] text-white px-12 py-5 rounded-full font-bold hover:scale-105 transition-all duration-300 inline-block shadow-xl shadow-purple-900/20 active:scale-95"
+      >
         Reservar Cita
       </a>
     </div>

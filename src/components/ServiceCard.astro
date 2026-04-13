@@ -1,14 +1,21 @@
 ---
 // src/components/ServiceCard.astro
+import { Image } from 'astro:assets'; // Importante importar el componente
+
 const { title, description, image, link } = Astro.props;
 ---
 
 <div class="group p-6 rounded-[30px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-purple-200/50 transition-all duration-300 flex flex-col h-full">
   
   <div class="w-full h-48 mb-6 overflow-hidden rounded-2xl">
-    <img 
+    <Image 
       src={image} 
-      alt={title} 
+      alt={title}
+      width={400} 
+      height={250}
+      loading={'eager'}
+      format="webp"
+      quality="mid" 
       class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
     />
   </div>
@@ -18,7 +25,11 @@ const { title, description, image, link } = Astro.props;
     {description}
   </p>
   
-  <a href={link} class="mt-6 flex items-center text-[#CDB4DB] hover:text-[#a96fcb] font-semibold cursor-pointer group-hover:gap-2 transition-all">
+  <a 
+    href={link} 
+    data-astro-prefetch
+    class="mt-6 flex items-center text-[#CDB4DB] hover:text-[#a96fcb] font-semibold cursor-pointer group-hover:gap-2 transition-all"
+  >
     Saber más <span class="ml-1 text-lg">→</span>
   </a>
 </div>

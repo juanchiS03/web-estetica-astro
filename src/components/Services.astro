@@ -1,23 +1,26 @@
 ---
 import ServiceCard from "./ServiceCard.astro";
+import imagenUnas from "../assets/services/manicura.webp";
+import imagenMasaje from "../assets/services/masaje.webp";
+import imagenDepilacion from "../assets/services/depilacion.webp";
 
 const services = [
   {
     title: "Manicura Premium",
     description: "Cuidado completo de uñas y cutículas con acabado de larga duración y diseños personalizados.",
-    image: "/images/manicura.webp",
+    image: imagenUnas,
     link: "/servicios/manicura"
   },
   {
     title: "Masajes Spa",
     description: "Tratamiento relajante para tus pies que incluye exfoliación, hidratación y esmaltado.",
-    image: "/images/manicura.webp",
+    image: imagenMasaje,
     link: "/servicios/masajes-spa"
   },
   {
-    title: "Tratamientos Faciales",
-    description: "Limpia y rejuvenece tu piel con nuestros productos orgánicos de alta gama.",
-    image: "/images/manicura.webp",
+    title: "Deplilación Láser",
+    description: "Elimina el vello no deseado de forma efectiva y duradera con nuestra tecnología de depilación láser avanzada.",
+    image: imagenDepilacion,
     link: "/servicios/depilacion-laser"
   }
 ];
