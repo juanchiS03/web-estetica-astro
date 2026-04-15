@@ -1,20 +1,20 @@
 ---
 import { Image } from "astro:assets";
-import imageHero from "../assets/hero-unas.webp";
+import imageHero from "../assets/hero-unas1.webp";
 ---
 
 <section
-  class="relative h-[80vh] min-h-125 w-full rounded-[40px] overflow-hidden shadow-2xl bg-slate-900 flex justify-end items-center px-6 md:px-24 border-[#cdb4db] border-2 mt-16 md:mt-16"
+  class="relative h-auto min-h-137.5 md:min-h-175 w-full rounded-[40px] overflow-hidden shadow-2xl bg-slate-900 flex justify-end items-center px-6 md:px-24 border-[#cdb4db] border-2 mt-16 py-12 md:py-0"
 >
   <Image
     src={imageHero}
     alt="Manicura premium"
-    width={800}
-    height={600}
+    width={1920}
+    height={1080}
     loading={"eager"}
     format="webp"
-    quality="high"
-    class="absolute inset-0 w-full h-full object-cover object-left"
+    quality={100}
+    class="absolute inset-0 w-full h-full object-cover object-center"
     alt="Manicura premium"
     loading="eager"
     fetchpriority="high"
@@ -23,9 +23,11 @@ import imageHero from "../assets/hero-unas.webp";
   >
   </div>
 
-  <div class="relative z-10 p-10 md:p-20 md:pr-32 max-w-2xl text-left">
+  <div
+    class="relative z-10 p-4 md:p-20 max-w-2xl text-left md:text-right md:ml-auto"
+  >
     <h1
-      class="text-white text-5xl md:text-8xl font-bold leading-tight tracking-tighter"
+      class="text-white text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tighter"
     >
       Tus manos, <br />
       <span class="text-[#CDB4DB]">tu mejor</span>
