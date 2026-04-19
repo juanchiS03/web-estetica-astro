@@ -2,46 +2,10 @@
 import { Image } from "astro:assets";
 
 // Importaciones (Recuerda importar las 24 fotos reales)
-import foto1 from "../assets/nails/nail1.webp";
-import foto2 from "../assets/nails/nail2.webp";
-import foto3 from "../assets/nails/nail3.webp";
-import foto4 from "../assets/nails/nail4.webp";
-import foto5 from "../assets/nails/nail5.webp";
-import foto6 from "../assets/nails/nail6.webp";
-import foto7 from "../assets/nails/nail7.webp";
-import foto8 from "../assets/nails/nail8.webp";
-import foto9 from "../assets/nails/nail9.webp";
-import foto10 from "../assets/nails/nail10.webp";
-import foto11 from "../assets/nails/nail11.webp";
-import foto12 from "../assets/nails/nail12.webp";
-// ... importa aquí de la 13 a la 24
+const images = import.meta.glob("../assets/nails/*.webp", { eager: true });
 
-const galeriaNails = [
-    foto1,
-    foto2,
-    foto3,
-    foto4,
-    foto5,
-    foto6,
-    foto7,
-    foto8,
-    foto9,
-    foto10,
-    foto11,
-    foto12,
-    foto1,
-    foto2,
-    foto3,
-    foto4,
-    foto5,
-    foto6,
-    foto7,
-    foto8,
-    foto9,
-    foto10,
-    foto11,
-    foto12,
-];
+// Forzamos a que galeriaNails sea un array de objetos de imagen de Astro
+const galeriaNails = Object.values(images).map((img: any) => img.default);
 ---
 
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
