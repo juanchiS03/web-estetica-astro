@@ -12,11 +12,11 @@ import WhatsappIcon from "./WhatsappIcon.astro";
         Reserva tu cita por teléfono o ven a visitarnos a nuestro centro.
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+    <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div class="space-y-8">
             <div class="flex items-center gap-4 group">
                 <div
-                    class="size-12 rounded-full bg-[#CDB4DB]/20 flex items-center justify-center text-[#45556c]"
+                    class="size-12 rounded-full shrink-0 bg-[#CDB4DB]/20 flex items-center justify-center text-[#45556c]"
                 >
                     <MapIcon />
                 </div>
@@ -36,7 +36,7 @@ import WhatsappIcon from "./WhatsappIcon.astro";
                 </div>
                 <div>
                     <p class="text-[#45556c] font-bold">WhatsApp</p>
-                    <p class="text-slate-400">+34 638610289</p>
+                    <p class="text-slate-400  whitespace-nowrap">+34 638610289</p>
                 </div>
             </div>
         </div>
@@ -48,17 +48,17 @@ import WhatsappIcon from "./WhatsappIcon.astro";
                 <span class="text-[#45556c]"><ClockIcon /></span> Horario Comercial
             </h4>
             <div class="space-y-3 text-sm">
-                <div class="flex justify-between border-b border-white/5 pb-2">
+                <div class="flex flex-col justify-between border-b border-white/5 pb-2 gap-2  whitespace-nowrap">
                     <span class="text-slate-400 font-medium"
                         >Lunes - Viernes</span
                     >
                     <span class="text-[#45556c] font-bold">09:30 - 20:00</span>
                 </div>
-                <div class="flex justify-between border-b border-white/5 pb-2">
+                <div class="flex flex-col justify-between border-b border-white/5 pb-2 gap-2  whitespace-nowrap">
                     <span class="text-slate-400 font-medium">Sábado</span>
                     <span class="text-[#45556c] font-bold">10:00 - 14:00</span>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex flex-col justify-between gap-2">
                     <span class="text-slate-400 font-medium">Domingo</span>
                     <span
                         class="text-[#CDB4DB] font-bold italic uppercase text-xs"
@@ -69,18 +69,18 @@ import WhatsappIcon from "./WhatsappIcon.astro";
         </div>
     </div>
 
-    <div class="flex flex-col sm:flex-row gap-4 mt-12 w-full">
+    <div class="flex sm:flex-col md:flex-col lg:flex-row gap-4 mt-12 w-full max-w-2xl">
         <a
             href="https://wa.me/34638610289"
             target="_blank"
-            class="flex-1 bg-[#25D366] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg whitespace-nowrap"
+            class="flex-1 bg-[#25D366] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg items-center flex justify-center"
         >
             Hablar por WhatsApp
         </a>
 
         <a
             href="tel:+34638610289"
-            class="flex-1 bg-[#CDB4DB] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg whitespace-nowrap"
+            class="flex-1 bg-[#CDB4DB] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg items-center flex justify-center"
         >
             Llamar por teléfono
         </a>
