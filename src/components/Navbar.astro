@@ -2,23 +2,23 @@
 import { siteConfig, getWhatsappUrl } from "../data/servicios.js";
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-brand-bg/85 backdrop-blur-md border-b border-brand-border transition-all">
-    <div class="w-full px-6 sm:px-12 lg:px-20 xl:px-32 h-20 flex items-center justify-between gap-4">
+<header class="fixed top-0 left-0 right-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border transition-all">
+    <div class="w-full px-4 sm:px-12 lg:px-20 xl:px-32 h-16 sm:h-20 flex items-center justify-between gap-2">
         
         <!-- Marca / Logo -->
-        <a href="/#inicio" class="flex items-center gap-3 group shrink-0">
+        <a href="/#inicio" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
             <img
                 src="/favicon.ico"
                 alt={`Logo ${siteConfig.nombreLegal}`}
                 width="32"
                 height="32"
-                class="w-8 h-8 rounded-md object-contain shadow-xs transition-transform duration-300 group-hover:scale-105"
+                class="w-7 h-7 sm:w-8 sm:h-8 rounded-md object-contain shadow-xs shrink-0 transition-transform duration-300 group-hover:scale-105"
             />
-            <div class="flex flex-col">
-                <span class="font-serif text-base sm:text-lg font-semibold text-brand-dark tracking-normal leading-none">
+            <div class="flex flex-col min-w-0">
+                <span class="font-serif text-[15px] sm:text-lg font-semibold text-brand-dark tracking-normal leading-none truncate">
                     {siteConfig.nombreCorto}
                 </span>
-                <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-brand-muted mt-1">
+                <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.22em] text-brand-muted mt-1 truncate">
                     {siteConfig.tagline}
                 </span>
             </div>
@@ -40,13 +40,13 @@ import { siteConfig, getWhatsappUrl } from "../data/servicios.js";
             </a>
         </nav>
 
-        <!-- Botón Reservar (Derecha) -->
-        <div class="flex items-center gap-3">
+        <!-- Botón Reservar (Derecha - Blindado para móvil) -->
+        <div class="flex items-center shrink-0">
             <a
                 href={getWhatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="px-5 sm:px-6 py-2.5 rounded-full bg-brand-dark text-white text-[11px] font-medium uppercase tracking-[0.14em] hover:bg-brand-dark/85 transition-all"
+                class="whitespace-nowrap px-3.5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-brand-dark text-white text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.12em] sm:tracking-[0.14em] hover:bg-brand-dark/85 transition-all"
             >
                 Pedir Cita
             </a>
@@ -55,10 +55,10 @@ import { siteConfig, getWhatsappUrl } from "../data/servicios.js";
     </div>
 
     <!-- Sub-barra compacta solo para Móvil -->
-    <nav class="flex md:hidden justify-center items-center gap-6 py-2 px-4 border-t border-brand-border/60 bg-brand-bg/95 text-[10px] font-medium uppercase tracking-[0.15em] text-brand-muted">
-        <a href="/#inicio" class="hover:text-brand-dark">Inicio</a>
-        <a href="/#servicios" class="hover:text-brand-dark">Tratamientos</a>
-        <a href="/servicios/manicura#galeria" class="hover:text-brand-dark">Galería</a>
-        <a href="/#contacto" class="hover:text-brand-dark">Contacto</a>
+    <nav class="flex md:hidden justify-around items-center py-2 px-3 border-t border-brand-border/60 bg-brand-bg/95 text-[10px] font-medium uppercase tracking-[0.12em] text-brand-muted">
+        <a href="/#inicio" class="hover:text-brand-dark py-0.5">Inicio</a>
+        <a href="/#servicios" class="hover:text-brand-dark py-0.5">Tratamientos</a>
+        <a href="/servicios/manicura#galeria" class="hover:text-brand-dark py-0.5">Galería</a>
+        <a href="/#contacto" class="hover:text-brand-dark py-0.5">Contacto</a>
     </nav>
 </header>
