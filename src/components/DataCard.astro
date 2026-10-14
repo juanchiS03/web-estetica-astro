@@ -2,87 +2,95 @@
 import ClockIcon from "./ClockIcon.astro";
 import MapIcon from "./MapIcon.astro";
 import WhatsappIcon from "./WhatsappIcon.astro";
+import { siteConfig, getWhatsappUrl } from "../data/servicios.js";
+
+const { contacto, horario, seccionContacto } = siteConfig;
 ---
 
-<div
-    class="bg-white/10 backdrop-blur-xl rounded-[40px] p-8 md:p-12 border-[#cdb4db] border-2 shadow-2xl flex flex-col justify-center"
->
-    <h3 class="text-3xl font-bold text-[#45556c] mb-2">¿Tienes dudas?</h3>
-    <p class="text-slate-400 mb-10 italic">
-        Reserva tu cita por teléfono o ven a visitarnos a nuestro centro.
-    </p>
+<div class="w-full bg-white rounded-2xl p-8 sm:p-10 md:p-12 border border-brand-border shadow-xs flex flex-col justify-between">
+    
+    <div>
+        <span class="text-[11px] uppercase tracking-[0.22em] text-brand-lilac-dark font-semibold block mb-2">
+            {seccionContacto.etiqueta}
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl text-brand-dark font-normal mb-3">
+            {seccionContacto.titulo}
+        </h2>
+        <p class="text-brand-muted text-sm font-light leading-relaxed mb-10">
+            {seccionContacto.descripcion}
+        </p>
 
-    <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div class="space-y-8">
-            <div class="flex items-center gap-4 group">
-                <div
-                    class="size-12 shrink-0 rounded-full bg-[#CDB4DB]/20 flex items-center justify-center text-[#45556c]"
-                >
-                    <MapIcon />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            
+            <!-- Datos de contacto directo -->
+            <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                    <div class="size-10 shrink-0 rounded-full bg-brand-lilac-light flex items-center justify-center text-brand-dark mt-0.5">
+                        <MapIcon />
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.15em] text-brand-muted font-semibold">Dirección</p>
+                        <p class="text-brand-dark text-sm font-medium mt-1">
+                            {contacto.direccionCalle}
+                        </p>
+                        <p class="text-brand-muted text-xs font-light">{contacto.direccionCiudad}</p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-[#45556c] font-bold">Dirección</p>
-                    <p class="text-slate-400">
-                        Calle Vélez de Guevara, 30, Logroño
-                    </p>
+
+                <div class="flex items-start gap-4">
+                    <div class="size-10 shrink-0 rounded-full bg-brand-lilac-light flex items-center justify-center text-brand-dark mt-0.5">
+                        <WhatsappIcon />
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.15em] text-brand-muted font-semibold">Teléfono y WhatsApp</p>
+                        <p class="text-brand-dark text-sm font-medium mt-1">{contacto.telefonoVisible}</p>
+                        <p class="text-brand-muted text-xs font-light">Respuesta rápida en horario comercial</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex items-center gap-4 group">
-                <div
-                    class="size-12 rounded-full bg-[#CDB4DB]/20 flex items-center justify-center text-[#45556c]"
-                >
-                    <WhatsappIcon />
-                </div>
-                <div>
-                    <p class="text-[#45556c] font-bold">WhatsApp</p>
-                    <p class="text-slate-400">+34 638610289</p>
+            <!-- Caja de Horario dinámica -->
+            <div class="bg-brand-bg rounded-xl p-5 border border-brand-border">
+                <h3 class="font-sans text-xs uppercase tracking-[0.16em] text-brand-dark font-semibold mb-4 flex items-center gap-2">
+                    <span class="text-brand-lilac-dark"><ClockIcon /></span> Horario de Apertura
+                </h3>
+                <div class="space-y-3 text-xs">
+                    {horario.map((item, idx) => (
+                        <div class={`flex justify-between items-center ${idx < horario.length - 1 ? "border-b border-brand-border pb-2.5" : "pt-0.5"}`}>
+                            <span class="text-brand-muted">{item.dias}</span>
+                            {item.cerrado ? (
+                                <span class="text-brand-lilac-dark font-medium uppercase tracking-wider text-[10px]">
+                                    {item.horas}
+                                </span>
+                            ) : (
+                                <span class="text-brand-dark font-semibold">{item.horas}</span>
+                            )}
+                        </div>
+                    ))}
                 </div>
             </div>
-        </div>
 
-        <div
-            class="bg-white/5 rounded-3xl p-6 border border-white/10 md:mt-0.5 md:pt-1.25"
-        >
-            <h4 class="text-[#45556c] font-bold mb-4 flex items-center gap-2">
-                <span class="text-[#45556c]"><ClockIcon /></span> Horario Comercial
-            </h4>
-            <div class="space-y-3 text-sm">
-                <div class="flex flex-col justify-between border-b border-white/5 pb-2 gap-2  whitespace-nowrap">
-                    <span class="text-slate-400 font-medium"
-                        >Lunes - Viernes</span
-                    >
-                    <span class="text-[#45556c] font-bold">09:30 - 20:00</span>
-                </div>
-                <div class="flex flex-col justify-between border-b border-white/5 pb-2 gap-2 whitespace-nowrap">
-                    <span class="text-slate-400 font-medium">Sábado</span>
-                    <span class="text-[#45556c] font-bold">10:00 - 14:00</span>
-                </div>
-                <div class="flex flex-col justify-between gap-2">
-                    <span class="text-slate-400 font-medium">Domingo</span>
-                    <span
-                        class="text-[#CDB4DB] font-bold italic uppercase text-xs"
-                        >Cerrado</span
-                    >
-                </div>
-            </div>
         </div>
     </div>
 
-    <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row gap-4 mt-12 w-full">
+    <!-- Botones de Acción Sobrios -->
+    <div class="flex flex-col sm:flex-row gap-4 mt-10 pt-8 border-t border-brand-border">
         <a
-            href="https://wa.me/34638610289"
+            href={getWhatsappUrl()}
             target="_blank"
-            class="flex-1 bg-[#25D366] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg items-center flex justify-center"
+            rel="noopener noreferrer"
+            class="flex-1 bg-brand-dark text-white text-center py-4 px-6 rounded-full text-xs uppercase tracking-[0.15em] font-semibold hover:bg-brand-dark/85 transition-all flex items-center justify-center gap-2.5 shadow-sm"
         >
-            Hablar por WhatsApp
+            <span class="size-4 flex items-center justify-center"><WhatsappIcon /></span>
+            <span>Reservar por WhatsApp</span>
         </a>
 
         <a
-            href="tel:+34638610289"
-            class="flex-1 bg-[#CDB4DB] text-white text-center py-4 px-8 rounded-full font-bold hover:scale-105 transition-all shadow-lg items-center flex justify-center"
+            href={`tel:${contacto.telefonoLlamada}`}
+            class="flex-1 bg-transparent text-brand-dark border border-brand-dark text-center py-4 px-6 rounded-full text-xs uppercase tracking-[0.15em] font-semibold hover:bg-brand-dark hover:text-white transition-all flex items-center justify-center"
         >
-            Llamar por teléfono
+            Llamar al Centro
         </a>
     </div>
+
 </div>

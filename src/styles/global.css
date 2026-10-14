@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@theme {
+  /* Tipografías globales */
+  --font-serif: "Playfair Display Variable", Georgia, serif;
+  --font-sans: "Montserrat Variable", system-ui, sans-serif;
+
+  /* Paleta de colores del centro */
+  --color-brand-bg: #FAF8F5;          /* Blanco roto / marfil muy suave (Fondo principal) */
+  --color-brand-surface: #F3EFEA;     /* Piedra cálido (Para alternar secciones o tarjetas) */
+  --color-brand-dark: #18181B;        /* Negro carbón suave (Textos principales y botones serios) */
+  --color-brand-muted: #71717A;       /* Gris medio (Subtítulos y textos secundarios) */
+  --color-brand-lilac: #CDB4DB;       /* Tu lila corporativo original (Detalles suaves) */
+  --color-brand-lilac-light: #F4EFF8; /* Lila casi blanco (Fondos de etiquetas o hover sutil) */
+  --color-brand-lilac-dark: #8E6BA1;  /* Lila oscuro (Para textos sobre fondo claro con buen contraste) */
+  --color-brand-border: #E6E1DA;      /* Borde fino editorial */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-dark);
+  }
+
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-brand-bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}

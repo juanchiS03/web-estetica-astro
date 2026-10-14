@@ -1,28 +1,118 @@
 ---
 import NailsGalery from "../../components/NailsGalery.astro";
 import Layout from "../../layouts/Layout.astro";
+import { manicuraPageData, siteConfig, getWhatsappUrl } from "../../data/servicios.js";
 ---
 
-<Layout title="Manicura Premium - Estética SandraMZCórdoba">
-  <div
-    class="relative min-h-screen w-full [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,#CDB4DB_100%)]"
-  >
-    <main class="max-w-full mx-auto pt-40 pb-20 px-6">
-      <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-10 text-center">
-        Manicura <span class="text-[#CDB4DB]">Premium</span>
-      </h1>
-
-      <NailsGalery />
-
-      <div class="flex justify-center w-full mt-10">
+<Layout title={`Manicura Premium y Galería | ${siteConfig.nombreLegal}`}>
+  <section class="py-16 md:py-24 bg-brand-bg">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="mb-8">
         <a
           href="/#servicios"
           data-astro-prefetch
-          class="flex items-center text-white hover:text-[#CDB4DB] font-bold transition-colors"
+          class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-brand-muted hover:text-brand-dark transition-colors"
         >
-          <span class="mr-2">←</span> Volver al inicio
+          <span>←</span> Volver a tratamientos
         </a>
       </div>
-    </main>
-  </div>
+
+      <!-- Cabecera de Página -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div class="max-w-2xl">
+          <span class="text-[11px] uppercase tracking-[0.25em] text-brand-lilac-dark font-semibold block mb-3">
+            {manicuraPageData.etiqueta}
+          </span>
+          <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-brand-dark font-normal leading-tight">
+            {manicuraPageData.titulo} <span class="italic font-light text-brand-lilac-dark">{manicuraPageData.tituloCursiva}</span>
+          </h1>
+          <p class="mt-5 text-brand-muted text-base font-light leading-relaxed">
+            {manicuraPageData.descripcion}
+          </p>
+        </div>
+
+        <a
+          href="#galeria"
+          class="inline-flex items-center gap-2 self-start md:self-auto px-5 py-2.5 rounded-full bg-brand-surface border border-brand-border text-xs uppercase tracking-[0.15em] font-medium text-brand-dark hover:border-brand-lilac-dark transition-all shrink-0"
+        >
+          <span>Ver galería de trabajos</span>
+          <span>↓</span>
+        </a>
+      </div>
+
+      <!-- 1. Carta de Tarifas de Manicura -->
+      <div class="bg-white rounded-2xl border border-brand-border p-8 sm:p-12 shadow-xs mb-24">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-brand-border">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-brand-lilac-dark font-semibold block mb-1">
+              Carta de Servicios
+            </span>
+            <h2 class="font-serif text-2xl sm:text-3xl text-brand-dark font-normal">
+              Tarifas de Manos y Pies
+            </h2>
+          </div>
+          <span class="text-xs uppercase tracking-[0.15em] text-brand-muted">
+            Precios por sesión
+          </span>
+        </div>
+
+        <div class="divide-y divide-brand-border">
+          {manicuraPageData.precios.map((item) => (
+            <div class="py-6 first:pt-2 last:pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group">
+              <div class="max-w-xl">
+                <div class="flex flex-wrap items-center gap-3">
+                  <h3 class="font-serif text-xl sm:text-2xl text-brand-dark font-normal group-hover:text-brand-lilac-dark transition-colors">
+                    {item.nombre}
+                  </h3>
+                  {item.duracion && (
+                    <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-brand-surface text-brand-muted font-medium">
+                      {item.duracion}
+                    </span>
+                  )}
+                </div>
+                <p class="text-brand-muted text-sm font-light mt-1.5 leading-relaxed">
+                  {item.detalle}
+                </p>
+              </div>
+
+              <div class="flex items-center justify-between sm:justify-end gap-6 pt-2 sm:pt-0 shrink-0">
+                <span class="font-serif text-2xl sm:text-3xl text-brand-dark font-semibold">
+                  {item.precio}
+                </span>
+                <a
+                  href={getWhatsappUrl(`Hola Sandra, me gustaría pedir cita para ${item.nombre}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-4 py-2 rounded-full border border-brand-border text-[11px] uppercase tracking-[0.14em] font-semibold text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all"
+                >
+                  Reservar
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 2. Galería de Trabajos -->
+      <div id="galeria" class="scroll-mt-28">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-8 pb-4 border-b border-brand-border">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.22em] text-brand-lilac-dark font-semibold block mb-1">
+              Portfolio en el centro
+            </span>
+            <h2 class="font-serif text-2xl sm:text-3xl text-brand-dark font-normal">
+              Galería de Trabajos Reales
+            </h2>
+          </div>
+          <span class="text-xs text-brand-muted font-light">
+            Haz clic en cualquier imagen para ampliarla
+          </span>
+        </div>
+
+        <NailsGalery />
+      </div>
+
+    </div>
+  </section>
 </Layout>

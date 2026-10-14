@@ -12,75 +12,107 @@ export function getStaticPaths() {
 const { info } = Astro.props;
 ---
 
-<Layout title={`${info.titulo} - Estética SandraMZCórdoba`}>
-    <div
-        class="fixed inset-0 -z-10 h-full w-full [background:radial-gradient(125%_100%_at_50%_10%,#000_40%,#CDB4DB_100%)]"
-    >
-    </div>
-
-    <main
-        class="relative pt-40 pb-20 px-6 max-w-4xl mx-auto min-h-screen flex flex-col items-center"
-    >
-        <div class="text-center mb-16">
-            <h1
-                class="text-5xl md:text-7xl font-bold text-white tracking-tighter"
-            >
-                {info.titulo.split(" ")[0]}
-                <span class="text-[#CDB4DB]"
-                    >{info.titulo.split(" ").slice(1).join(" ")}</span
+<Layout title={`${info.titulo} | Estética Sandra Mz. Córdoba`}>
+    <section class="py-16 md:py-24 bg-brand-bg">
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <!-- Enlace volver -->
+            <div class="mb-8">
+                <a
+                    href="/#servicios"
+                    data-astro-prefetch
+                    class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-brand-muted hover:text-brand-dark transition-colors"
                 >
-            </h1>
-            <p class="mt-4 text-slate-400 text-lg max-w-xl mx-auto">
-                {info.descripcion}
-            </p>
-        </div>
+                    <span>←</span> Volver a tratamientos
+                </a>
+            </div>
 
-        <div class="w-full backdrop-blur-xl p-8 md:p-16 rounded-4xl">
-            <h3
-                class="text-3xl font-bold text-white mb-12 flex items-center gap-2"
-            >
-                <span class="text-[#CDB4DB]">✦</span> Tarifas de Servicio
-            </h3>
+            <!-- Cabecera del Servicio -->
+            <div class="mb-14">
+                <span class="text-[11px] uppercase tracking-[0.25em] text-brand-lilac-dark font-semibold block mb-3">
+                    {info.categoria || "Tratamiento Especializado"}
+                </span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-brand-dark font-normal leading-tight">
+                    {info.titulo}
+                </h1>
+                <p class="mt-5 text-brand-muted text-base md:text-lg font-light leading-relaxed max-w-2xl">
+                    {info.descripcion}
+                </p>
+            </div>
 
-            <div class="flex flex-col w-full gap-y-12 mb-16">
-                {
-                    info.precios.map((item) => (
-                        <div class="flex items-start justify-between w-full group gap-x-4">
-                            <div class="flex-1 min-w-0">
-                                <p class="text-xl md:text-2xl font-bold text-white wrap-break-word [hyphens:auto] [lang:es]">
-                                    {item.nombre}
-                                </p>
-                                <p class="text-slate-400 mt-1 text-sm md:text-lg italic leading-relaxed">
+            <!-- Carta de Tarifas Editorial -->
+            <div class="bg-white rounded-2xl border border-brand-border p-8 sm:p-12 shadow-xs">
+                <div class="flex items-center justify-between pb-6 mb-6 border-b border-brand-border">
+                    <h2 class="font-serif text-2xl sm:text-3xl text-brand-dark font-normal">
+                        Carta de Tarifas
+                    </h2>
+                    <span class="text-xs uppercase tracking-[0.15em] text-brand-muted">
+                        Precios por sesión
+                    </span>
+                </div>
+
+                <div class="divide-y divide-brand-border">
+                    {info.precios.map((item: any) => (
+                        <div class="py-6 first:pt-2 last:pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group">
+                            <div class="max-w-lg">
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <h3 class="font-serif text-xl sm:text-2xl text-brand-dark font-normal group-hover:text-brand-lilac-dark transition-colors">
+                                        {item.nombre}
+                                    </h3>
+                                    {item.duracion && (
+                                        <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-brand-surface text-brand-muted font-medium">
+                                            {item.duracion}
+                                        </span>
+                                    )}
+                                </div>
+                                <p class="text-brand-muted mt-1.5 text-sm font-light leading-relaxed">
                                     {item.detalle}
                                 </p>
                             </div>
 
-                            <div class="text-2xl md:text-3xl font-extrabold text-[#CDB4DB] whitespace-nowrap pt-1">
-                                {item.precio}
+                            <div class="flex items-center justify-between sm:justify-end gap-6 pt-2 sm:pt-0 shrink-0">
+                                <span class="font-serif text-2xl sm:text-3xl text-brand-dark font-semibold">
+                                    {item.precio}
+                                </span>
+                                <a
+                                    href={`https://wa.me/34638610289?text=${encodeURIComponent(`Hola Sandra, me gustaría reservar cita para ${info.titulo} (${item.nombre}).`)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="px-4 py-2 rounded-full border border-brand-border text-[11px] uppercase tracking-[0.14em] font-semibold text-brand-dark hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all"
+                                >
+                                    Reservar
+                                </a>
                             </div>
                         </div>
-                    ))
-                }
+                    ))}
+                </div>
+
+                <!-- Nota informativa inferior -->
+                {info.nota && (
+                    <div class="mt-10 p-5 rounded-xl bg-brand-surface border border-brand-border flex items-start gap-3">
+                        <span class="text-brand-lilac-dark text-sm mt-0.5">✦</span>
+                        <p class="text-xs sm:text-sm text-brand-muted font-light leading-relaxed">
+                            {info.nota}
+                        </p>
+                    </div>
+                )}
+
+                <!-- CTA General -->
+                <div class="mt-10 pt-8 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p class="text-xs text-brand-muted font-light text-center sm:text-left">
+                        ¿Tienes dudas sobre qué tratamiento o zona elegir? Te asesoramos sin compromiso.
+                    </p>
+                    <a
+                        href={`https://wa.me/34638610289?text=${encodeURIComponent(`Hola Sandra, quería consultar información sobre ${info.titulo}.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full sm:w-auto text-center bg-brand-dark text-white px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.15em] font-semibold hover:bg-brand-dark/85 transition-all shrink-0"
+                    >
+                        Consultar por WhatsApp
+                    </a>
+                </div>
             </div>
 
-            <div class="mt-16 text-center">
-                <a
-                    href="/#contacto"
-                    class="inline-block bg-[#CDB4DB] text-white px-12 py-5 rounded-full font-bold hover:scale-105 transition-all shadow-xl active:scale-95 text-xl"
-                >
-                    Reservar Cita
-                </a>
-            </div>
         </div>
-
-        <div class="mt-12 text-center flex justify-center">
-            <a
-                href="/#servicios"
-                data-astro-prefetch
-                class="group flex items-center gap-1 text-[#CDB4DB] hover:text-[#a96fcb] transition-all cursor-pointer font-medium group-hover:gap-3"
-            >
-                <span class="text-lg">←</span> Volver a la página principal
-            </a>
-        </div>
-    </main>
+    </section>
 </Layout>

@@ -1,7 +1,7 @@
 ---
 const {
-	title,
-	description = "Centro de Estética en Logroño. Especialistas en manicura, pedicura y tratamientos de bienestar.",
+	title = "Estética Sandra Mz. Córdoba · Logroño",
+	description = "Centro de Estética avanzada y bienestar en Logroño. Especialistas en manicura premium, cuidado facial, masajes y depilación láser.",
 } = Astro.props;
 
 import Footer from "../components/Footer.astro";
@@ -17,7 +17,7 @@ import "@fontsource-variable/montserrat/wght.css";
 	<head>
 		<ClientRouter />
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
@@ -25,40 +25,14 @@ import "@fontsource-variable/montserrat/wght.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#CDB4DB" />
+		<meta name="theme-color" content="#FAF8F5" />
 		<title>{title}</title>
 	</head>
-	<body id="inicio">
+	<body id="inicio" class="flex flex-col min-h-screen bg-brand-bg text-brand-dark selection:bg-brand-lilac/40">
 		<Navbar />
-		<slot />
+		<main class="flex-grow pt-20">
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>
-
-<style>
-	html {
-		scroll-behavior: smooth;
-	}
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #f9fafb;
-	}
-</style>
-<style is:global>
-	/* Estilos globales */
-	h1,
-	h2,
-	h3 {
-		font-family: "Playfair Display Variable", serif;
-		font-weight: 700;
-	}
-	p,
-	a,
-	span,
-	html,
-	body {
-		font-family: "Montserrat Variable", sans-serif;
-	}
-</style>

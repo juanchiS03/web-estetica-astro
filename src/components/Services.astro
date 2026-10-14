@@ -3,49 +3,47 @@ import ServiceCard from "./ServiceCard.astro";
 import imagenUnas from "../assets/services/manicura.webp";
 import imagenMasaje from "../assets/services/masaje.webp";
 import imagenDepilacion from "../assets/services/depilacion.webp";
+import { siteConfig, resumenServiciosHome } from "../data/servicios.js";
 
-const services = [
-  {
-    title: "Manicura Premium",
-    description: "Cuidado completo de uñas y cutículas con acabado de larga duración y diseños personalizados.",
-    image: imagenUnas,
-    link: "/servicios/manicura"
-  },
-  {
-    title: "Masajes Spa",
-    description: "Tratamiento relajante para tus pies que incluye exfoliación, hidratación y esmaltado.",
-    image: imagenMasaje,
-    link: "/servicios/masajes-spa"
-  },
-  {
-    title: "Deplilación Láser",
-    description: "Elimina el vello no deseado de forma efectiva y duradera con nuestra tecnología de depilación láser avanzada.",
-    image: imagenDepilacion,
-    link: "/servicios/depilacion-laser"
-  }
-];
+const imagenesMap: Record<string, any> = {
+  manicura: imagenUnas,
+  masajes: imagenMasaje,
+  laser: imagenDepilacion,
+};
+
+const { seccionServicios } = siteConfig;
 ---
 
-<section id="servicios" class="py-20 bg-[white] border-[#cdb4db] border-2 rounded-4xl mt-20">
-  <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section id="servicios" class="py-24 md:py-32 bg-brand-bg border-b border-brand-border">
+  <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20">
     
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Nuestros Servicios</h2>
-      <div class="h-1 w-20 bg-[#CDB4DB] mx-auto rounded-full"></div>
-      <p class="text-slate-500 mt-6 max-w-2xl mx-auto text-lg">
-        Ofrecemos una experiencia de belleza integral, enfocada en los detalles y en tu bienestar.
+    <!-- Encabezado Editorial -->
+    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+      <span class="text-[11px] uppercase tracking-[0.25em] text-brand-lilac-dark font-semibold block mb-3">
+        {seccionServicios.etiqueta}
+      </span>
+      <h2 class="font-serif text-4xl md:text-5xl text-brand-dark font-normal">
+        {seccionServicios.titulo}
+      </h2>
+      <div class="h-px w-16 bg-brand-lilac-dark/40 mx-auto my-6"></div>
+      <p class="text-brand-muted text-base font-light leading-relaxed">
+        {seccionServicios.descripcion}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {services.map(service => (
+    <!-- Grid de Servicios -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+      {resumenServiciosHome.map((service) => (
         <ServiceCard 
+          category={service.category}
           title={service.title} 
           description={service.description} 
-          image={service.image} 
+          image={imagenesMap[service.id]} 
           link={service.link}
+          ctaText={service.ctaText}
         />
       ))}
     </div>
+
   </div>
 </section>

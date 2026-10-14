@@ -2,41 +2,63 @@
 import InstagramIcon from "./InstagramIcon.astro";
 ---
 
-<footer class="w-full bg-black py-12 px-6 border-t border-white/10">
-    <div
-        class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"
-    >
-        <div
-            class="flex flex-col items-center md:items-start text-center md:text-left"
-        >
-            <h2 class="text-2xl font-bold text-white">
-                Estética <span class="text-[#CDB4DB]">SandraMzCordoba</span>
-            </h2>
-            <p class="text-slate-400 mt-2 text-sm max-w-xs">
-                Tu centro de confianza en Logroño para el cuidado de tus manos y
-                bienestar.
-            </p>
-        </div>
+<footer class="w-full bg-brand-dark text-white border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-start">
+            
+            <!-- Columna 1: Marca -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <span class="text-[10px] uppercase tracking-[0.25em] text-brand-lilac mb-2">
+                    Estética & Bienestar
+                </span>
+                <h2 class="font-serif text-2xl font-normal text-white tracking-wide">
+                    Sandra Mz. Córdoba
+                </h2>
+                <p class="text-zinc-400 mt-3 text-sm leading-relaxed max-w-xs font-light">
+                    Cuidado experto en manicura, belleza avanzada y bienestar integral en el centro de Logroño.
+                </p>
+            </div>
 
-        <div class="flex flex-col items-center gap-4">
-            <span class="text-white font-medium">Sígueme en redes</span>
-
-            <div class="flex flex-row items-center justify-center gap-6">
-                <a
-                    href="https://www.instagram.com/sandramzcordoba?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="size-10 flex items-center justify-center text-slate-400 hover:text-[#CDB4DB] transition-all hover:scale-110"
-                    title="Síguenos en Instagram"
+            <!-- Columna 2: Navegación y Horario -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left text-sm">
+                <span class="text-xs uppercase tracking-[0.18em] text-brand-lilac font-medium mb-4">
+                    Información
+                </span>
+                <p class="text-zinc-300 font-light">C. Vélez de Guevara, 30 · 26005 Logroño</p>
+                <p class="text-zinc-400 font-light mt-1">Lun – Vie: 09:30 – 20:00 · Sáb: 10:00 – 14:00</p>
+                <a 
+                    href="tel:+34638610289" 
+                    class="text-white hover:text-brand-lilac transition-colors mt-3 font-medium tracking-wide"
                 >
-                    <InstagramIcon />
+                    +34 638 61 02 89
                 </a>
             </div>
-        </div>
-    </div>
 
-    <div class="mt-12 text-center text-slate-500 text-xs">
-        &copy; {new Date().getFullYear()} Estética Sandra Martinez Córdoba. Todos
-        los derechos reservados.
+            <!-- Columna 3: Redes y Cita -->
+            <div class="flex flex-col items-center md:items-end text-center md:text-right">
+                <span class="text-xs uppercase tracking-[0.18em] text-brand-lilac font-medium mb-4">
+                    Síguenos en redes
+                </span>
+                <a
+                    href="https://www.instagram.com/sandramzcordoba"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/15 text-zinc-300 hover:text-white hover:border-brand-lilac/60 transition-all text-xs tracking-wider"
+                    title="Síguenos en Instagram"
+                >
+                    <span class="size-4 flex items-center justify-center">
+                        <InstagramIcon />
+                    </span>
+                    <span>@sandramzcordoba</span>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Línea inferior copyright -->
+        <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-zinc-500 text-xs font-light">
+            <p>&copy; {new Date().getFullYear()} Estética Sandra Martínez Córdoba. Todos los derechos reservados.</p>
+            <p class="text-zinc-600">Logroño, La Rioja</p>
+        </div>
     </div>
 </footer>

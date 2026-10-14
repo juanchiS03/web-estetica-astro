@@ -1,29 +1,64 @@
 ---
-import { Image } from "astro:assets";
+import { siteConfig, getWhatsappUrl } from "../data/servicios.js";
 ---
 
-<nav class="fixed top-0 w-full bg-black/95 backdrop-blur-sm px-4 py-3 z-50 border-b border-white/10">
-    <div class="w-full mx-auto flex flex-col gap-4">
+<header class="fixed top-0 left-0 right-0 z-50 bg-brand-bg/85 backdrop-blur-md border-b border-brand-border transition-all">
+    <div class="w-full px-6 sm:px-12 lg:px-20 xl:px-32 h-20 flex items-center justify-between gap-4">
         
-        <div class="flex items-center justify-center">
-            <a href="/#inicio" class="flex items-center gap-2">
-                <Image
-                    src="/favicon.ico"
-                    alt="Logo"
-                    width={24}
-                    height={24}
-                    class="w-6 h-6 md:w-8 md:h-8"/>
-                <h1 class="text-lg font-bold text-white tracking-tight">
-                    Estética <span class="text-slate-400">SandraMzCórdoba</span>
-                </h1>
+        <!-- Marca / Logo -->
+        <a href="/#inicio" class="flex items-center gap-3 group shrink-0">
+            <img
+                src="/favicon.ico"
+                alt={`Logo ${siteConfig.nombreLegal}`}
+                width="32"
+                height="32"
+                class="w-8 h-8 rounded-md object-contain shadow-xs transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="flex flex-col">
+                <span class="font-serif text-base sm:text-lg font-semibold text-brand-dark tracking-normal leading-none">
+                    {siteConfig.nombreCorto}
+                </span>
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-brand-muted mt-1">
+                    {siteConfig.tagline}
+                </span>
+            </div>
+        </a>
+
+        <!-- Enlaces centrales (Escritorio) -->
+        <nav class="hidden md:flex items-center gap-10 text-xs font-medium uppercase tracking-[0.16em] text-brand-muted">
+            <a href="/#inicio" class="hover:text-brand-dark transition-colors py-1">
+                Inicio
+            </a>
+            <a href="/#servicios" class="hover:text-brand-dark transition-colors py-1">
+                Tratamientos
+            </a>
+            <a href="/servicios/manicura#galeria" class="hover:text-brand-dark transition-colors py-1">
+                Galería Uñas
+            </a>
+            <a href="/#contacto" class="hover:text-brand-dark transition-colors py-1">
+                Contacto
+            </a>
+        </nav>
+
+        <!-- Botón Reservar (Derecha) -->
+        <div class="flex items-center gap-3">
+            <a
+                href={getWhatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-5 sm:px-6 py-2.5 rounded-full bg-brand-dark text-white text-[11px] font-medium uppercase tracking-[0.14em] hover:bg-brand-dark/85 transition-all"
+            >
+                Pedir Cita
             </a>
         </div>
 
-        <div class="flex justify-center items-center gap-x-5 text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-[#CDB4DB]">
-            <a href="/#inicio" class="active:text-white">Inicio</a>
-            <a href="/#servicios" class="active:text-white">Servicios</a>
-            <a href="/servicios/manicura" class="active:text-white text-center">Galería</a>
-            <a href="/#contacto" class="active:text-white">Contacto</a>
-        </div>
     </div>
-</nav>
+
+    <!-- Sub-barra compacta solo para Móvil -->
+    <nav class="flex md:hidden justify-center items-center gap-6 py-2 px-4 border-t border-brand-border/60 bg-brand-bg/95 text-[10px] font-medium uppercase tracking-[0.15em] text-brand-muted">
+        <a href="/#inicio" class="hover:text-brand-dark">Inicio</a>
+        <a href="/#servicios" class="hover:text-brand-dark">Tratamientos</a>
+        <a href="/servicios/manicura#galeria" class="hover:text-brand-dark">Galería</a>
+        <a href="/#contacto" class="hover:text-brand-dark">Contacto</a>
+    </nav>
+</header>

@@ -1,25 +1,108 @@
 ---
 import { Image } from "astro:assets";
 
-// Importaciones (Recuerda importar las 24 fotos reales)
 const images = import.meta.glob("../assets/nails/*.webp", { eager: true });
-
-// Forzamos a que galeriaNails sea un array de objetos de imagen de Astro
 const galeriaNails = Object.values(images).map((img: any) => img.default);
 ---
 
-<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    {
-        galeriaNails.map((foto, index) => (
-            <div class="overflow-hidden rounded-[20px] shadow-lg border border-white/5 group">
-                <Image
-                    src={foto}
-                    alt={`Diseño de uñas - Estética SandraMZCórdoba en Logroño ${index + 1}`}
-                    width={600}
-                    height={600}
-                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-            </div>
-        ))
-    }
+<div>
+    <!-- Grid Editorial de Fotos -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        {
+            galeriaNails.map((foto, index) => (
+                <button
+                    type="button"
+                    data-lightbox-src={foto.src}
+                    data-lightbox-index={index + 1}
+                    class="group relative aspect-4/5 overflow-hidden rounded-2xl bg-brand-surface border border-brand-border cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-brand-lilac-dark"
+                >
+                    <Image
+                        src={foto}
+                        alt={`Trabajo de manicura en Logroño - Diseño ${index + 1}`}
+                        width={600}
+                        height={750}
+                        class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    
+                    <!-- Velo sutil al pasar el ratón -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+                        <span class="text-[11px] uppercase tracking-[0.2em] text-white font-medium">
+                            Diseño #{String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span class="text-xs text-brand-lilac bg-black/50 backdrop-blur-xs px-2.5 py-1 rounded-full">
+                            Ampliar +
+                        </span>
+                    </div>
+                </button>
+            ))
+        }
+    </div>
+
+    <!-- Modal / Lightbox para ver la foto en grande -->
+    <div
+        id="nail-lightbox"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300"
+        aria-hidden="true"
+    >
+        <div class="relative max-w-2xl w-full flex flex-col items-center">
+            <button
+                type="button"
+                id="close-lightbox"
+                class="mb-4 self-end px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs uppercase tracking-[0.15em] transition-colors cursor-pointer"
+            >
+                Cerrar ✕
+            </button>
+            <img
+                id="lightbox-img"
+                src=""
+                alt="Vista ampliada de manicura"
+                class="max-h-[80vh] w-auto rounded-2xl shadow-2xl border border-white/15 object-contain"
+            />
+        </div>
+    </div>
 </div>
+
+<script>
+    function initLightbox() {
+        const buttons = document.querySelectorAll("[data-lightbox-src]");
+        const modal = document.getElementById("nail-lightbox");
+        const modalImg = document.getElementById("lightbox-img") as HTMLImageElement | null;
+        const closeBtn = document.getElementById("close-lightbox");
+
+        if (!modal || !modalImg) return;
+
+        buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const src = btn.getAttribute("data-lightbox-src");
+                if (src) {
+                    modalImg.src = src;
+                    modal.classList.remove("hidden");
+                    modal.classList.add("flex");
+                    requestAnimationFrame(() => {
+                        modal.classList.remove("opacity-0");
+                    });
+                }
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.add("opacity-0");
+            setTimeout(() => {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+                modalImg.src = "";
+            }, 250);
+        };
+
+        closeBtn?.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+        });
+    }
+
+    // Compatible con ClientRouter de Astro
+    document.addEventListener("astro:page-load", initLightbox);
+</script>

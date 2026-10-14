@@ -1,35 +1,46 @@
 ---
-// src/components/ServiceCard.astro
-import { Image } from 'astro:assets'; // Importante importar el componente
+import { Image } from 'astro:assets';
 
-const { title, description, image, link } = Astro.props;
+const { category, title, description, image, link, ctaText = "Saber más" } = Astro.props;
 ---
 
-<div class="group p-6 rounded-[30px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-purple-200/50 transition-all duration-300 flex flex-col h-full">
-  
-  <div class="w-full h-48 mb-6 overflow-hidden rounded-2xl">
+<a 
+  href={link}
+  data-astro-prefetch
+  class="group bg-white rounded-2xl border border-brand-border overflow-hidden hover:border-brand-lilac-dark/50 hover:shadow-xl hover:shadow-stone-900/5 transition-all duration-500 flex flex-col h-full"
+>
+  <!-- Imagen del servicio -->
+  <div class="relative w-full h-64 overflow-hidden bg-brand-surface">
     <Image 
       src={image} 
       alt={title}
-      width={400} 
-      height={250}
-      loading={'eager'}
+      width={600} 
+      height={400}
       format="webp"
-      quality="mid" 
-      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+      quality="high" 
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
     />
   </div>
 
-  <h3 class="text-2xl font-bold text-slate-800 mb-3">{title}</h3>
-  <p class="text-slate-600 leading-relaxed grow text-sm">
-    {description}
-  </p>
-  
-  <a 
-    href={link} 
-    data-astro-prefetch
-    class="mt-6 flex items-center text-[#CDB4DB] hover:text-[#a96fcb] font-semibold cursor-pointer group-hover:gap-2 transition-all"
-  >
-    Saber más <span class="ml-1 text-lg">→</span>
-  </a>
-</div>
+  <!-- Contenido -->
+  <div class="p-8 flex flex-col flex-grow">
+    {category && (
+      <span class="text-[10px] uppercase tracking-[0.2em] text-brand-lilac-dark font-semibold mb-2">
+        {category}
+      </span>
+    )}
+    
+    <h3 class="font-serif text-2xl text-brand-dark font-normal mb-3 group-hover:text-brand-lilac-dark transition-colors">
+      {title}
+    </h3>
+    
+    <p class="text-brand-muted leading-relaxed font-light text-sm flex-grow">
+      {description}
+    </p>
+    
+    <div class="mt-8 pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs uppercase tracking-[0.15em] font-semibold text-brand-dark group-hover:text-brand-lilac-dark transition-colors">
+      <span>{ctaText}</span>
+      <span class="text-base transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+    </div>
+  </div>
+</a>

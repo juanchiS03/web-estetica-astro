@@ -3,15 +3,20 @@ import Map from "./Map.astro";
 import DataCard from "./DataCard.astro";
 ---
 
-<section
-    id="contacto"
-    class="mt-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch"
->
-    <DataCard />
+<section id="contacto" class="py-24 md:py-32 bg-brand-surface">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
+            
+            <!-- Columna Datos y Horario (7 columnas) -->
+            <div class="lg:col-span-7 flex">
+                <DataCard />
+            </div>
 
-    <div
-        class="rounded-[40px] overflow-hidden border-[#cdb4db] border-2 shadow-2xl min-h-100"
-    >
-        <Map/>
+            <!-- Columna Mapa (5 columnas) -->
+            <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-brand-border shadow-sm min-h-[380px] bg-white">
+                <Map />
+            </div>
+
+        </div>
     </div>
 </section>
